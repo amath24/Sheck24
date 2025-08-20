@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheck24 - Portfolio Créatif</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Sheck24</h2>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">about</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio" class="nav-link">work</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+            <button class="lets-talk-btn">Let's Talk</button>
+            
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="gradient-overlay"></div>
+            <div class="particles">
+                <!-- Particules animées -->
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Développeur d’applications</span>
+                <span class="title-line accent">Web & Mobile & Gaming</span>
+            </h1>
+            <p class="hero-subtitle">Création d'applications modernes et performantes</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">Voir mes projets</a>
+                <a href="#contact" class="btn btn-secondary">Découvrir</a>
+            </div>
+        </div>
+        <div class="tech-stack">
+            <div class="tech-item"></div>
+            <div class="tech-item"></div>
+            <div class="tech-item"></div>
+            <div class="tech-item"></div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">À propos</h2>
+                    <h3 class="about-subtitle">Je m’appelle Amath Alain Seck – Étudiant & Développeur Web, Mobile & Gaming</h3>
+                    <p>Étudiant passionné par le numérique, je crée des applications web, mobiles et jeux vidéo, en alliant apprentissage, expertise technique et créativité. Mon objectif est de concevoir des solutions innovantes, performantes et immersives offrant une expérience utilisateur unique.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">17+</span>
+                            <span class="stat-label">Projets réalisés</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Années d'expérience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">9%</span>
+                            <span class="stat-label">Clients satisfaits</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-container">
+                        <div class="image-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="icon-shape"></div>
+                    </div>
+                    <h3>Design UI/UX</h3>
+                    <p>Interfaces utilisateur intuitives et expériences utilisateur optimisées</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="icon-shape"></div>
+                    </div>
+                    <h3>Développement Web</h3>
+                    <p>Applications web modernes et performantes avec les dernières technologies</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="icon-shape"></div>
+                    </div>
+                    <h3>Branding</h3>
+                    <p>Identité visuelle forte et cohérente pour votre marque</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="icon-shape"></div>
+                    </div>
+                    <h3>Stratégie Digitale</h3>
+                    <p>Conseils stratégiques pour optimiser votre présence en ligne</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Tout</button>
+                <button class="filter-btn" data-filter="web">Web / Design</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="Gaming">Gaming</button>
+            </div>
+            <div class="portfolio-grid" id="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder"></div>
+                        <div class="portfolio-overlay">
+                            <h3>Projet E-commerce</h3>
+                            <p>Site web moderne pour boutique en ligne</p>
+                            <button class="view-btn">Voir le projet</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder"></div>
+                        <div class="portfolio-overlay">
+                            <h3>Identité Visuelle</h3>
+                            <p>Branding complet pour startup tech</p>
+                            <button class="view-btn">Voir le projet</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="Gaming">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder"></div>
+                        <div class="portfolio-overlay">
+                            <h3>Dashboard Analytics</h3>
+                            <p>Interface utilisateur pour plateforme de données</p>
+                            <button class="view-btn">Voir le projet</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder"></div>
+                        <div class="portfolio-overlay">
+                            <h3>App Mobile</h3>
+                            <p>Application mobile de fitness et santé</p>
+                            <button class="view-btn">Voir le projet</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder"></div>
+                        <div class="portfolio-overlay">
+                            <h3>Portfolio Artiste</h3>
+                            <p>Site vitrine pour photographe professionnel</p>
+                            <button class="view-btn">Voir le projet</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder"></div>
+                        <div class="portfolio-overlay">
+                            <h3>Restaurant Gastronomique</h3>
+                            <p>Identité complète et site web</p>
+                            <button class="view-btn">Voir le projet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Contact</h2>
+                    <h3>Discutons de votre projet</h3>
+                    <p>Prêt à donner vie à vos idées ? Contactez-nous pour discuter de votre prochain projet digital.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>Email</strong>
+                            <p>amathalain2004@gmail.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Téléphone</strong>
+                            <p>+221 76 255 32 32</p>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Adresse</strong>
+                            <p>keur Massar<br>Dakar, Senegal</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Sheck24</h3>
+                    <p>Créateur digital innovant</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#home">Accueil</a></li>
+                            <li><a href="#about">À propos</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Design UI/UX</a></li>
+                            <li><a href="#">Développement Web</a></li>
+                            <li><a href="#">Branding</a></li>
+                            <li><a href="#">Stratégie Digitale</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sheck24. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<script>
+// === VARIABLES GLOBALES ===
+let isMenuOpen = false;
+let currentFilter = 'all';
+
+// === INITIALISATION ===
+document.addEventListener('DOMContentLoaded', function() {
+    initNavigation();
+    initScrollAnimations();
+    initPortfolioFilters();
+    initContactForm();
+    initSmoothScrolling();
+    initScrollIndicator();
+});
+
+// === NAVIGATION ===
+function initNavigation() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbar = document.getElementById('navbar');
+
+    // Toggle menu mobile
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        isMenuOpen = !isMenuOpen;
+    });
+
+    // Fermer le menu lors du clic sur un lien
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            isMenuOpen = false;
+            
+            // Mise à jour du lien actif
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Effet de scroll sur la navbar
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Mise à jour du lien actif selon la section visible
+        updateActiveNavLink();
+    });
+}
+
+// === MISE À JOUR DU LIEN ACTIF ===
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// === ANIMATIONS AU SCROLL ===
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Éléments à animer
+    const elementsToAnimate = [
+        '.about-text',
+        '.about-image',
+        '.service-card',
+        '.portfolio-item',
+        '.contact-info',
+        '.contact-form',
+        '.stat-item'
+    ];
+
+    elementsToAnimate.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((element, index) => {
+            element.classList.add('fade-in');
+            element.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(element);
+        });
+    });
+
+    // Animations spécifiques
+    const leftElements = document.querySelectorAll('.about-text, .contact-info');
+    leftElements.forEach(element => {
+        element.classList.remove('fade-in');
+        element.classList.add('slide-in-left');
+    });
+
+    const rightElements = document.querySelectorAll('.about-image, .contact-form');
+    rightElements.forEach(element => {
+        element.classList.remove('fade-in');
+        element.classList.add('slide-in-right');
+    });
+}
+
+// === FILTRES PORTFOLIO ===
+function initPortfolioFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Mise à jour du bouton actif
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filtrage des éléments
+            filterPortfolioItems(filter);
+            currentFilter = filter;
+        });
+    });
+}
+
+function filterPortfolioItems(filter) {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    portfolioItems.forEach((item, index) => {
+        const category = item.getAttribute('data-category');
+        
+        if (filter === 'all' || category === filter) {
+            // Afficher l'élément avec animation
+            setTimeout(() => {
+                item.classList.remove('hidden');
+                item.style.animationDelay = `${index * 0.1}s`;
+            }, index * 50);
+        } else {
+            // Masquer l'élément
+            item.classList.add('hidden');
+        }
+    });
+}
+
+// === FORMULAIRE DE CONTACT ===
+function initContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Récupération des données du formulaire
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        // Validation
+        if (!validateForm(data)) {
+            return;
+        }
+        
+        // Simulation d'envoi
+        simulateFormSubmission(data);
+    });
+}
+
+function validateForm(data) {
+    const errors = [];
+    
+    if (!data.name || data.name.trim().length < 2) {
+        errors.push('Le nom doit contenir au moins 2 caractères');
+    }
+    
+    if (!data.email || !isValidEmail(data.email)) {
+        errors.push('Veuillez entrer une adresse email valide');
+    }
+    
+    if (!data.message || data.message.trim().length < 10) {
+        errors.push('Le message doit contenir au moins 10 caractères');
+    }
+    
+    if (errors.length > 0) {
+        showNotification('Erreur: ' + errors.join(', '), 'error');
+        return false;
+    }
+    
+    return true;
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function simulateFormSubmission(data) {
+    // Affichage du message de chargement
+    const submitButton = document.querySelector('.contact-form .btn-primary');
+    const originalText = submitButton.textContent;
+    
+    submitButton.textContent = 'Envoi en cours...';
+    submitButton.disabled = true;
+    
+    // Simulation d'envoi (2 secondes)
+    setTimeout(() => {
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+        
+        // Réinitialisation du formulaire
+        document.getElementById('contact-form').reset();
+        
+        // Message de succès
+        showNotification('Message envoyé avec succès !', 'success');
+    }, 2000);
+}
+
+// === SYSTÈME DE NOTIFICATIONS ===
+function showNotification(message, type = 'info') {
+    // Création de l'élément notification
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    
+    // Styles inline pour la notification
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 10px;
+        color: white;
+        font-weight: 500;
+        z-index: 10000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        max-width: 300px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    `;
+    
+    // Couleurs selon le type
+    const colors = {
+        success: '#10b981',
+        error: '#ef4444',
+        info: '#6366f1',
+        warning: '#f59e0b'
+    };
+    
+    notification.style.backgroundColor = colors[type] || colors.info;
+    
+    // Ajout au DOM
+    document.body.appendChild(notification);
+    
+    // Animation d'entrée
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Suppression automatique
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
+}
+
+// === SCROLL FLUIDE ===
+function initSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offsetTop = target.offsetTop - 80;
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// === INDICATEUR DE SCROLL ===
+function initScrollIndicator() {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function() {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+}
+
+// === EFFETS PARALLAX ===
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.floating-shapes');
+    
+    parallaxElements.forEach(element => {
+        const speed = 0.5;
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+    });
+});
+
+// === GESTION DES ERREURS ===
+window.addEventListener('error', function(e) {
+    console.error('Erreur détectée:', e.error);
+});
+
+// === OPTIMISATION PERFORMANCE ===
+// Throttle function pour optimiser les événements scroll
+function throttle(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Application du throttle aux événements scroll
+const throttledScrollHandler = throttle(function() {
+    updateActiveNavLink();
+}, 100);
+
+window.addEventListener('scroll', throttledScrollHandler);
+
+// === CHARGEMENT LAZY POUR LES IMAGES ===
+function initLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// === ANIMATIONS COMPLEXES ===
+function initAdvancedAnimations() {
+    // Animation des compteurs
+    const counters = document.querySelectorAll('.stat-number');
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    });
+    
+    counters.forEach(counter => counterObserver.observe(counter));
+}
+
+function animateCounter(element) {
+    const target = parseInt(element.textContent);
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+        current += step;
+        element.textContent = Math.floor(current);
+        
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        }
+    }, 16);
+}
+
+// === ACCESSIBILITÉ ===
+function initAccessibility() {
+    // Gestion du focus pour la navigation au clavier
+    const focusableElements = document.querySelectorAll('a, button, input, textarea, select');
+    
+    focusableElements.forEach(element => {
+        element.addEventListener('focus', function() {
+            this.style.outline = '2px solid #6366f1';
+            this.style.outlineOffset = '2px';
+        });
+        
+        element.addEventListener('blur', function() {
+            this.style.outline = 'none';
+        });
+    });
+}
+
+// === INITIALISATION COMPLÈTE ===
+document.addEventListener('DOMContentLoaded', function() {
+    initAdvancedAnimations();
+    initLazyLoading();
+    initAccessibility();
+});
+</script>
