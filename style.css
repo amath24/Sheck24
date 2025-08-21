@@ -364,9 +364,14 @@ h1, h2, h3, h4, h5, h6 {
         width: 100%;
         height: calc(100vh - 80px);
         background: rgba(0, 0, 0, 0.95);
-        transition: 0.3s;
-        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
         margin: 0;
+        transition: 0.3s;
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -374,16 +379,52 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-item {
-        margin: 16px 0;
+        margin: 20px 0;
         width: 100%;
         text-align: center;
     }
 
     .nav-link {
-        padding: 12px 20px;
+        display: inline-block;
+        padding: 15px 0;
+        font-size: 1.2rem;
         width: 100%;
-        display: block;
+        color: #fff !important;
     }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff !important;
+    }
+
+    /* Ajustement de l'espacement entre les éléments */
+    .nav-menu .nav-item + .nav-item {
+        margin-top: 10px;
+    }
+
+    /* Animation des liens */
+    .nav-menu.active .nav-item {
+        animation: fadeInDown 0.5s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Délai d'animation pour chaque lien */
+    .nav-menu.active .nav-item:nth-child(1) { animation-delay: 0.1s; }
+    .nav-menu.active .nav-item:nth-child(2) { animation-delay: 0.2s; }
+    .nav-menu.active .nav-item:nth-child(3) { animation-delay: 0.3s; }
+    .nav-menu.active .nav-item:nth-child(4) { animation-delay: 0.4s; }
 
     .services-grid,
     .portfolio-grid,
@@ -991,9 +1032,14 @@ h1, h2, h3, h4, h5, h6 {
         width: 100%;
         height: calc(100vh - 80px);
         background: rgba(0, 0, 0, 0.95);
-        transition: 0.3s;
-        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
         margin: 0;
+        transition: 0.3s;
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -1001,39 +1047,55 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-item {
-        margin: 16px 0;
+        margin: 20px 0;
         width: 100%;
         text-align: center;
     }
 
-    .lets-talk-btn {
-        display: none !important;
-    }
-
-    /* Ajustement du titre pour éviter le débordement */
-    .hero-title {
-        font-size: 2rem;
-        width: 100%;
-        padding: 0 15px;
-        word-wrap: break-word;
-    }
-
-    .title-line {
+    .nav-link {
         display: inline-block;
+        padding: 15px 0;
+        font-size: 1.2rem;
         width: 100%;
+        color: #fff !important;
     }
 
-    /* Ajustement des sections */
-    section {
-        width: 100%;
-        overflow-x: hidden;
-        padding-left: 15px;
-        padding-right: 15px;
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff !important;
     }
 
-    /* Ajustement des grilles */
-    .portfolio-grid,
+    /* Ajustement de l'espacement entre les éléments */
+    .nav-menu .nav-item + .nav-item {
+        margin-top: 10px;
+    }
+
+    /* Animation des liens */
+    .nav-menu.active .nav-item {
+        animation: fadeInDown 0.5s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Délai d'animation pour chaque lien */
+    .nav-menu.active .nav-item:nth-child(1) { animation-delay: 0.1s; }
+    .nav-menu.active .nav-item:nth-child(2) { animation-delay: 0.2s; }
+    .nav-menu.active .nav-item:nth-child(3) { animation-delay: 0.3s; }
+    .nav-menu.active .nav-item:nth-child(4) { animation-delay: 0.4s; }
+
     .services-grid,
+    .portfolio-grid,
     .about-content,
     .contact-content {
         grid-template-columns: 1fr;
@@ -1141,45 +1203,3 @@ h1, h2, h3, h4, h5, h6 {
 .particle:nth-child(6) { top: 70%; left: 35%; animation: moveParticle 8s infinite linear 5s; }
 .particle:nth-child(7) { top: 50%; left: 95%; animation: moveParticle 8s infinite linear 6s; }
 .particle:nth-child(8) { top: 90%; left: 60%; animation: moveParticle 8s infinite linear 7s; }
-
-// === FORMULAIRE DE CONTACT ===
-function initContactForm() {
-    const form = document.getElementById('contact-form');
-    
-    async function handleSubmit(event) {
-        event.preventDefault();
-        
-        // Message de chargement
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = 'Envoi en cours...';
-        submitButton.disabled = true;
-
-        try {
-            const response = await fetch(form.action, {
-                method: form.method,
-                body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                // Succès
-                form.reset();
-                showNotification('Message envoyé avec succès !', 'success');
-            } else {
-                // Erreur
-                throw new Error('Erreur lors de l\'envoi');
-            }
-        } catch (error) {
-            showNotification('Erreur: Impossible d\'envoyer le message', 'error');
-        } finally {
-            // Réinitialiser le bouton
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }
-    }
-
-    form.addEventListener('submit', handleSubmit);
-}
