@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -16,13 +17,23 @@ body {
     background: #111; /* Fond noir */
     overflow-x: hidden;
     width: 100%;
-    max-width: 100%;
+    max-width: 100vw;
     position: relative;
     padding: 0;
     margin: 0;
 }
 
 /* Modifier les styles de base pour éviter le débordement */
+body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+/* Ajuster le container */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -311,7 +322,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        width: 100%;
+        padding: 0 15px;
+        word-wrap: break-word;
     }
 
     .hero-subtitle {
@@ -345,16 +359,14 @@ h1, h2, h3, h4, h5, h6 {
 
     .nav-menu {
         position: fixed;
-        left: -100%;
         top: 80px;
-        flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.95);
+        left: -100%;
         width: 100%;
         height: calc(100vh - 80px);
-        padding: 40px 0;
+        background: rgba(0, 0, 0, 0.95);
+        transition: 0.3s;
+        padding: 20px 0;
         margin: 0;
-        transition: 0.4s ease;
-        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -406,6 +418,15 @@ h1, h2, h3, h4, h5, h6 {
     .btn {
         width: 100%;
         max-width: 280px;
+    }
+
+    /* Ajustements pour très petits écrans */
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .title-line.accent {
+        font-size: 1.5rem;
     }
 }
 
@@ -961,50 +982,70 @@ h1, h2, h3, h4, h5, h6 {
     .nav-container {
         padding: 0 15px;
         width: 100%;
-        box-sizing: border-box;
     }
 
     .nav-menu {
-        width: 100%;
+        position: fixed;
+        top: 80px;
         left: -100%;
-        margin: 0;
-        padding: 20px 0;
-    }
-
-    .hero {
-        padding: 100px 20px 60px;
-    }
-
-    .hero-content {
-        padding: 0 15px;
         width: 100%;
-        box-sizing: border-box;
+        height: calc(100vh - 80px);
+        background: rgba(0, 0, 0, 0.95);
+        transition: 0.3s;
+        padding: 20px 0;
+        margin: 0;
     }
 
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .lets-talk-btn {
+        display: none !important;
+    }
+
+    /* Ajustement du titre pour éviter le débordement */
     .hero-title {
         font-size: 2rem;
         width: 100%;
+        padding: 0 15px;
         word-wrap: break-word;
     }
 
-    .hero-buttons {
+    .title-line {
+        display: inline-block;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
-    .btn {
+    /* Ajustement des sections */
+    section {
         width: 100%;
-        max-width: 250px;
+        overflow-x: hidden;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
-    .services-grid,
+    /* Ajustement des grilles */
     .portfolio-grid,
+    .services-grid,
     .about-content,
     .contact-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* Ajustement des conteneurs */
+    .container {
+        width: 100%;
+        padding: 0 15px;
+        overflow-x: hidden;
     }
 }
 
@@ -1028,22 +1069,13 @@ h1, h2, h3, h4, h5, h6 {
         max-width: 280px;
     }
 
-    section {
-        padding: 60px 0;
-        overflow-x: hidden;
+    /* Ajustements pour très petits écrans */
+    .hero-title {
+        font-size: 1.8rem;
     }
 
-    .about-content,
-    .services-grid,
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 15px;
-    }
-
-    .stats {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .title-line.accent {
+        font-size: 1.5rem;
     }
 }
 
