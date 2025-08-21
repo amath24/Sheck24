@@ -173,72 +173,44 @@ function filterPortfolioItems(filter) {
 
 // === FORMULAIRE DE CONTACT ===
 function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
+    const form = document.getElementById('contact-form');
     
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+    async function handleSubmit(event) {
+        event.preventDefault();
         
-        // Récupération des données du formulaire
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Validation
-        if (!validateForm(data)) {
-            return;
+        // Message de chargement
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Envoi en cours...';
+        submitButton.disabled = true;
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Succès
+                form.reset();
+                showNotification('Message envoyé avec succès !', 'success');
+            } else {
+                // Erreur
+                throw new Error('Erreur lors de l\'envoi');
+            }
+        } catch (error) {
+            showNotification('Erreur: Impossible d\'envoyer le message', 'error');
+        } finally {
+            // Réinitialiser le bouton
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
         }
-        
-        // Simulation d'envoi
-        simulateFormSubmission(data);
-    });
-}
+    }
 
-function validateForm(data) {
-    const errors = [];
-    
-    if (!data.name || data.name.trim().length < 2) {
-        errors.push('Le nom doit contenir au moins 2 caractères');
-    }
-    
-    if (!data.email || !isValidEmail(data.email)) {
-        errors.push('Veuillez entrer une adresse email valide');
-    }
-    
-    if (!data.message || data.message.trim().length < 10) {
-        errors.push('Le message doit contenir au moins 10 caractères');
-    }
-    
-    if (errors.length > 0) {
-        showNotification('Erreur: ' + errors.join(', '), 'error');
-        return false;
-    }
-    
-    return true;
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function simulateFormSubmission(data) {
-    // Affichage du message de chargement
-    const submitButton = document.querySelector('.contact-form .btn-primary');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Envoi en cours...';
-    submitButton.disabled = true;
-    
-    // Simulation d'envoi (2 secondes)
-    setTimeout(() => {
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-        
-        // Réinitialisation du formulaire
-        document.getElementById('contact-form').reset();
-        
-        // Message de succès
-        showNotification('Message envoyé avec succès !', 'success');
-    }, 2000);
+    form.addEventListener('submit', handleSubmit);
 }
 
 // === SYSTÈME DE NOTIFICATIONS ===
