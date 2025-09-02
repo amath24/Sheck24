@@ -39,6 +39,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -896,10 +897,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer-logo h3 {
     font-size: 1.8rem;
     margin-bottom: 10px;
-    background: linear-gradient(135deg, #232526 0%, #000000 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #fff;
 }
 
 .footer-logo p {
@@ -1141,65 +1139,180 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* LOGO NAVBAR & FOOTER */
-.nav-logo h2,
-.footer-logo h3 {
-    color: #fff !important;
-    background: none !important;
-    -webkit-background-clip: unset !important;
-    -webkit-text-fill-color: unset !important;
-    background-clip: unset !important;
-    font-weight: 800;
-    letter-spacing: 2px;
-    font-size: 2rem;
-    transition: filter 0.3s;
-    filter: none;
+/* === CORRECTIONS RESPONSIVE === */
+
+/* Reset pour tous les éléments */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
 }
 
-/* Particules animées */
+/* Correction du conteneur principal */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    overflow: hidden;
+}
+
+/* Ajustements pour les sections */
+section {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Correction des grilles */
+.services-grid,
+.portfolio-grid,
+.about-content,
+.contact-content {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Media queries améliorées */
+@media (max-width: 768px) {
+    /* Correction des grilles en mobile */
+    .services-grid,
+    .portfolio-grid,
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+
+    /* Ajustement des images */
+    .image-placeholder {
+        height: 300px;
+    }
+
+    /* Correction du texte */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .about-subtitle {
+        font-size: 1.2rem;
+    }
+
+    /* Ajustement des cartes */
+    .service-card,
+    .portfolio-item {
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* Correction pour très petits écrans */
+@media (max-width: 480px) {
+    /* Ajustement des marges */
+    section {
+        padding: 60px 0;
+    }
+
+    /* Correction des textes */
+    .hero-title {
+        font-size: 1.8rem;
+        padding: 0;
+    }
+
+    /* Ajustement des formulaires */
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Correction footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Correction navigation mobile */
+@media (max-width: 768px) {
+    .nav-menu {
+        width: 100vw;
+        left: -100vw;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+}
+
+/* Ajoutez ces styles pour les particules après la section hero */
 .particles {
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     z-index: 1;
 }
 
 .particle {
     position: absolute;
-    width: 6px;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.8);
+    width: 8px;
+    height: 8px;
+    background: #667eea; /* Nouvelle couleur */
     border-radius: 50%;
     pointer-events: none;
-    opacity: 0;
+    opacity: 0.6;
+    box-shadow: 0 0 10px #667eea, 0 0 20px #667eea; /* Effet de lueur */
 }
 
-@keyframes moveParticle {
+/* Mise à jour du gradient de l'arrière-plan */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #000000, #1a1a1a);
+    z-index: 0;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(102, 126, 234, 0.1) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+/* Animation des particules mise à jour */
+@keyframes float {
     0% {
-        transform: translate(0, 0) scale(1);
+        transform: translateY(0) translateX(0);
         opacity: 0;
     }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
+    50% {
+        opacity: 0.6;
     }
     100% {
-        transform: translate(100px, -100px) scale(0);
+        transform: translateY(-100vh) translateX(100px);
         opacity: 0;
     }
 }
 
-/* Position initiale des particules */
-.particle:nth-child(1) { top: 20%; left: 10%; animation: moveParticle 8s infinite linear; }
-.particle:nth-child(2) { top: 60%; left: 20%; animation: moveParticle 8s infinite linear 1s; }
-.particle:nth-child(3) { top: 40%; left: 50%; animation: moveParticle 8s infinite linear 2s; }
-.particle:nth-child(4) { top: 80%; left: 70%; animation: moveParticle 8s infinite linear 3s; }
-.particle:nth-child(5) { top: 30%; left: 85%; animation: moveParticle 8s infinite linear 4s; }
-.particle:nth-child(6) { top: 70%; left: 35%; animation: moveParticle 8s infinite linear 5s; }
-.particle:nth-child(7) { top: 50%; left: 95%; animation: moveParticle 8s infinite linear 6s; }
-.particle:nth-child(8) { top: 90%; left: 60%; animation: moveParticle 8s infinite linear 7s; }
+/* Style pour chaque particule individuelle */
+.particle:nth-child(1) { animation: float 8s infinite; left: 10%; }
+.particle:nth-child(2) { animation: float 10s infinite; left: 20%; animation-delay: -2s; }
+.particle:nth-child(3) { animation: float 7s infinite; left: 30%; animation-delay: -1s; }
+.particle:nth-child(4) { animation: float 9s infinite; left: 40%; animation-delay: -3s; }
+.particle:nth-child(5) { animation: float 8s infinite; left: 50%; animation-delay: -2s; }
+.particle:nth-child(6) { animation: float 10s infinite; left: 60%; animation-delay: -4s; }
+.particle:nth-child(7) { animation: float 7s infinite; left: 70%; animation-delay: -1.5s; }
+.particle:nth-child(8) { animation: float 9s infinite; left: 80%; animation-delay: -2.5s; }
