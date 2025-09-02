@@ -553,7 +553,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
      border-radius: 20px;
     overflow: hidden;
-    background: url("img/photo_1_2025-08-20_14-45-43.jpg") center/cover no-repeat; /* image seule */
+    background: url("img/moi.jpg") center/cover no-repeat; /* image seule */
 }
 
 .image-placeholder::after {
