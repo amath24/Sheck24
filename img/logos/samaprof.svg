@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="sama-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0518"/>
+      <stop offset="100%" stop-color="#1f1035"/>
+    </linearGradient>
+    <linearGradient id="sama-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="sama-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#sama-bg)"/>
+
+  <g transform="translate(150, 30)">
+    <polygon points="50,15 95,35 50,55 5,35" fill="url(#sama-purple)"/>
+    <polygon points="50,15 95,35 50,55 5,35" fill="none" stroke="#fde047" stroke-width="1.5"/>
+    <path d="M 25 45 L 25 70 C 25 80 75 80 75 70 L 75 45" fill="url(#sama-purple)" stroke="#a855f7" stroke-width="1.5"/>
+    <path d="M 90 35 L 94 65 L 90 68" fill="none" stroke="#fde047" stroke-width="2"/>
+    <circle cx="90" cy="70" r="3" fill="#fde047"/>
+    <path d="M 50 85 C 35 78 15 82 5 95 L 5 110 C 20 98 35 96 50 102 C 65 96 80 98 95 110 L 95 95 C 85 82 65 78 50 85 Z" 
+          fill="url(#sama-gold)"/>
+    <line x1="50" y1="85" x2="50" y2="102" stroke="#1f1035" stroke-width="2"/>
+  </g>
+
+  <text x="200" y="178" font-family="'Inter', Arial, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">
+    SAMA<tspan fill="#fde047">PROF</tspan>
+  </text>
+  <text x="200" y="204" font-family="'Fira Code', monospace, sans-serif" font-size="10.5" font-weight="600" fill="#c084fc" text-anchor="middle" letter-spacing="3">
+    PLATEFORME EDUCATIVE &#183; COURS
+  </text>
+</svg>

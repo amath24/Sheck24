@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="sup-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#021424"/>
+      <stop offset="100%" stop-color="#042a48"/>
+    </linearGradient>
+    <linearGradient id="sup-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#4facfe"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#sup-bg)"/>
+
+  <g transform="translate(155, 30)">
+    <polygon points="45,15 80,32 80,72 45,95 10,72 10,32" fill="none" stroke="url(#sup-cyan)" stroke-width="3"/>
+    <text x="45" y="65" font-family="'Inter', Arial, sans-serif" font-size="34" font-weight="900" fill="#ffd700" text-anchor="middle">
+      ST
+    </text>
+    <circle cx="45" cy="15" r="4" fill="#00f2fe"/>
+    <circle cx="80" cy="32" r="3.5" fill="#00f2fe"/>
+    <circle cx="80" cy="72" r="3.5" fill="#00f2fe"/>
+    <circle cx="45" cy="95" r="4" fill="#ffd700"/>
+    <circle cx="10" cy="72" r="3.5" fill="#00f2fe"/>
+    <circle cx="10" cy="32" r="3.5" fill="#00f2fe"/>
+  </g>
+
+  <text x="200" y="178" font-family="'Inter', Arial, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="3">
+    SUP<tspan fill="#00f2fe">TECH</tspan>
+  </text>
+  <text x="200" y="204" font-family="'Fira Code', monospace, sans-serif" font-size="10.5" font-weight="600" fill="#ffd700" text-anchor="middle" letter-spacing="3">
+    ENSEIGNEMENT SUPERIEUR &#183; GESTION
+  </text>
+</svg>

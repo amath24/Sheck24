@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="teranga-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1a12"/>
+      <stop offset="100%" stop-color="#052c18"/>
+    </linearGradient>
+    <linearGradient id="food-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#teranga-bg)"/>
+
+  <g transform="translate(155, 30)">
+    <path d="M 25 75 L 65 75 L 65 85 L 25 85 Z" fill="#ffd700"/>
+    <path d="M 23 75 C 10 70 8 45 22 38 C 20 25 40 15 50 25 C 62 12 80 25 78 38 C 90 45 88 70 67 75 Z" fill="#ffffff" stroke="#ffd700" stroke-width="2"/>
+    <path d="M 10 100 C 10 75 80 75 80 100 Z" fill="none" stroke="url(#food-gold)" stroke-width="3"/>
+    <line x1="5" y1="102" x2="85" y2="102" stroke="url(#food-gold)" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="45" cy="74" r="4.5" fill="#ffd700"/>
+  </g>
+
+  <text x="200" y="178" font-family="'Inter', Arial, sans-serif" font-size="26" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">
+    TERANGA <tspan fill="#ffd700">GOURMET</tspan>
+  </text>
+  <text x="200" y="204" font-family="'Fira Code', monospace, sans-serif" font-size="10.5" font-weight="600" fill="#4ade80" text-anchor="middle" letter-spacing="3">
+    GASTRONOMIE SENEGALAISE &#183; RESTAURATION
+  </text>
+</svg>

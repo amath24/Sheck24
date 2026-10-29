@@ -1,0 +1,28 @@
+# =============================================
+# FICHIERS À NE PAS COMMITTER
+# =============================================
+
+# Captures d'écran (racine du projet)
+Capture*.png
+Capture*.jpg
+
+# Enregistrements vidéo
+*.mp4
+*.avi
+*.mkv
+*.mov
+
+# Images PNG doublons dans img/logos/ (les SVG suffisent)
+img/logos/*.png
+
+# Fichiers système Windows
+Thumbs.db
+desktop.ini
+
+# Fichiers système macOS
+.DS_Store
+
+# Éditeurs
+*.swp
+*.swo
+.vscode/

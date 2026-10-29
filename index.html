@@ -1,760 +1,806 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sheck24 - Portfolio Créatif</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Amath Alain Seck | Développeur Fullstack & Mobile</title>
+    <meta name="description"
+        content="Portfolio de Amath Alain Seck, Développeur Fullstack & Mobile basé à Keur Massar, Dakar. Découvrez ses projets, compétences et services.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Polices Google : Inter + Fira Code + La Belle Aurore (pour les balises de code du design sdley) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&family=La+Belle+Aurore&display=swap"
+        rel="stylesheet">
+
+    <!-- Leaflet CSS pour la carte interactive (comme sur le site de référence) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="script.js"></script>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>Sheck24</h2>
-            </div>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">about</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#portfolio" class="nav-link">work</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
 
-            <button class="lets-talk-btn">Let's Talk</button>
-            
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <!-- ========== SIDEBAR GAUCHE (STYLE SDLEY) ========== -->
+    <aside class="sd-sidebar" id="sidebar">
+        <a href="#home" class="sd-sidebar-logo" aria-label="Accueil Amath">
+            <div class="sd-logo-icon">
+                <svg viewBox="0 0 48 48" class="logo-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 6L8 42H18L24 28L30 42H40L24 6Z" fill="url(#logo-grad-cyan)" stroke="#ffd700"
+                        stroke-width="2" />
+                    <path d="M18 28H30L24 14L18 28Z" fill="#ffd700" />
+                    <defs>
+                        <linearGradient id="logo-grad-cyan" x1="8" y1="6" x2="40" y2="42"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00bcd4" />
+                            <stop offset="1" stop-color="#05445e" />
+                        </linearGradient>
+                    </defs>
+                </svg>
             </div>
-        </div>
-    </nav>
+            <span class="sd-logo-text">Amath</span>
+        </a>
 
-    <!-- Section Hero -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="gradient-overlay"></div>
-            <div class="particles">
-                <!-- Particules animées -->
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-line">Développeur</span>
-                <span class="title-line">d'applications </span>
-                <span class="title-line accent">web & Mobile & Gaming</span>
-            </h1>
-            <p class="hero-subtitle">Création d'applications modernes et performantes</p>
-            <div class="hero-buttons">
-                <a href="#portfolio" class="btn btn-primary">Voir mes projets</a>
-                <a href="#contact" class="btn btn-secondary">Découvrir</a>
-            </div>
-        </div>
-        <div class="tech-stack">
-            <div class="tech-item"></div>
-            <div class="tech-item"></div>
-            <div class="tech-item"></div>
-            <div class="tech-item"></div>
-        </div>
-    </section>
+        <nav class="sd-sidebar-nav">
+            <a href="#home" class="sd-nav-link active" data-tooltip="Accueil" id="nav-home">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                </svg>
+            </a>
+            <a href="#about" class="sd-nav-link" data-tooltip="À propos" id="nav-about">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+            </a>
+            <a href="#portfolio" class="sd-nav-link" data-tooltip="Portfolio" id="nav-portfolio">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+                </svg>
+            </a>
+            <a href="#services" class="sd-nav-link" data-tooltip="Services" id="nav-services">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                </svg>
+            </a>
+            <a href="#activities" class="sd-nav-link" data-tooltip="Activités" id="nav-activities">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7" />
+                </svg>
+            </a>
+            <a href="#contact" class="sd-nav-link" data-tooltip="Contact" id="nav-contact">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </a>
+        </nav>
 
-    <!-- Section À propos -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">À propos</h2>
-                    <h3 class="about-subtitle">Je m’appelle Amath Alain Seck – Étudiant & Développeur Web, Mobile & Gaming</h3>
-                    <p>Étudiant passionné par le numérique, je crée des applications web, mobiles et jeux vidéo, en alliant apprentissage, expertise technique et créativité. Mon objectif est de concevoir des solutions innovantes, performantes et immersives offrant une expérience utilisateur unique.</p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-number">17+</span>
-                            <span class="stat-label">Projets réalisés</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">3</span>
-                            <span class="stat-label">Années d'expérience</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">9%</span>
-                            <span class="stat-label">Clients satisfaits</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="image-container">
-                        <div class="image-placeholder"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="sd-sidebar-socials">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="sd-social-link"
+                data-tooltip="LinkedIn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                </svg>
+            </a>
+            <a href="https://github.com/amath24" target="_blank" rel="noopener noreferrer" class="sd-social-link"
+                data-tooltip="GitHub" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.21.7.83.58C20.57 21.79 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+            </a>
         </div>
-    </section>
+    </aside>
 
-    <!-- Section Services -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <div class="icon-shape"></div>
-                    </div>
-                    <h3>Design UI/UX</h3>
-                    <p>Interfaces utilisateur intuitives et expériences utilisateur optimisées</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <div class="icon-shape"></div>
-                    </div>
-                    <h3>Développement Web</h3>
-                    <p>Applications web modernes et performantes avec les dernières technologies</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <div class="icon-shape"></div>
-                    </div>
-                    <h3>Branding</h3>
-                    <p>Identité visuelle forte et cohérente pour votre marque</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <div class="icon-shape"></div>
-                    </div>
-                    <h3>Stratégie Digitale</h3>
-                    <p>Conseils stratégiques pour optimiser votre présence en ligne</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ========== HEADER MOBILE ========== -->
+    <header class="sd-mobile-header" id="mobile-header">
+        <a href="#home" class="sd-mobile-logo">
+            <span class="sd-logo-letter-small">A</span>
+            <span class="sd-mobile-name">Amath Alain Seck</span>
+        </a>
+        <button class="sd-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span class="sd-bar"></span>
+            <span class="sd-bar"></span>
+            <span class="sd-bar"></span>
+        </button>
+    </header>
 
-    <!-- Section Portfolio -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Portfolio</h2>
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">Tout</button>
-                <button class="filter-btn" data-filter="web">Web / Design</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="Gaming">Gaming</button>
-            </div>
-            <div class="portfolio-grid" id="portfolio-grid">
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-image">
-                        <div class="image-placeholder"></div>
-                        <div class="portfolio-overlay">
-                            <h3>Projet E-commerce</h3>
-                            <p>Site web moderne pour boutique en ligne</p>
-                            <button class="view-btn">Voir le projet</button>
-                        </div>
+    <div class="sd-mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav class="sd-mobile-nav">
+            <a href="#home" class="sd-mobile-link">Accueil</a>
+            <a href="#about" class="sd-mobile-link">À propos</a>
+            <a href="#portfolio" class="sd-mobile-link">Portfolio</a>
+            <a href="#services" class="sd-mobile-link">Services</a>
+            <a href="#activities" class="sd-mobile-link">Activités</a>
+            <a href="#contact" class="sd-mobile-link">Contact</a>
+        </nav>
+    </div>
+
+    <!-- ========== CONTENU PRINCIPAL ========== -->
+    <main class="sd-main-content" id="main-content">
+
+        <!-- ==================== SECTION 1 : HERO (ACCUEIL) ==================== -->
+        <section id="home" class="sd-section sd-hero">
+            <div class="sd-container sd-hero-container">
+                <div class="sd-hero-text">
+                    <span class="sd-code-tag">&lt;body&gt;</span>
+                    <span class="sd-code-tag sd-indent">&lt;h1&gt;</span>
+
+                    <h1 class="sd-hero-title">
+                        <span class="sd-hero-line">Bonjour,</span>
+                        <span class="sd-hero-line">Welcome to my portfolio</span>
+                        <span class="sd-hero-line sd-hero-name"><span class="sd-brand-initial">A</span>math Alain
+                            Seck</span>
+                    </h1>
+
+                    <span class="sd-code-tag sd-indent">&lt;/h1&gt;</span>
+
+                    <div class="sd-hero-subtitles">
+                        <p class="sd-subtitle-role">Développeur Fullstack &middot; Mobile &middot; Intelligence
+                            Artificielle</p>
+                        <p class="sd-subtitle-tech">TypeScript, Python, PHP, React, Node.js, PostgreSQL &amp; IA</p>
                     </div>
-                </div>
-                <div class="portfolio-item" data-category="branding">
-                    <div class="portfolio-image">
-                        <div class="image-placeholder"></div>
-                        <div class="portfolio-overlay">
-                            <h3>Identité Visuelle</h3>
-                            <p>Branding complet pour startup tech</p>
-                            <button class="view-btn">Voir le projet</button>
-                        </div>
+
+                    <p class="sd-hero-desc">
+                        Développeur passionné par les technologies modernes et l'intelligence artificielle, je conçois
+                        et développe des applications web performantes, des backends robustes et des solutions digitales
+                        à fort impact. Mon approche repose sur une architecture solide, un code propre et une expérience
+                        utilisateur soignée.
+                    </p>
+
+                    <div class="sd-hero-buttons">
+                        <a href="#about" class="sd-btn sd-btn-gold">EN SAVOIR PLUS</a>
+                        <a href="#contact" class="sd-btn sd-btn-outline">ME CONTACTER</a>
                     </div>
+
+                    <span class="sd-code-tag">&lt;/body&gt;</span>
+                    <span class="sd-code-tag">&lt;/html&gt;</span>
                 </div>
-                <div class="portfolio-item" data-category="Gaming">
-                    <div class="portfolio-image">
-                        <div class="image-placeholder"></div>
-                        <div class="portfolio-overlay">
-                            <h3>Dashboard Analytics</h3>
-                            <p>Interface utilisateur pour plateforme de données</p>
-                            <button class="view-btn">Voir le projet</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="mobile">
-                    <div class="portfolio-image">
-                        <div class="image-placeholder"></div>
-                        <div class="portfolio-overlay">
-                            <h3>App Mobile</h3>
-                            <p>Application mobile de fitness et santé</p>
-                            <button class="view-btn">Voir le projet</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-image">
-                        <div class="image-placeholder"></div>
-                        <div class="portfolio-overlay">
-                            <h3>Portfolio Artiste</h3>
-                            <p>Site vitrine pour photographe professionnel</p>
-                            <button class="view-btn">Voir le projet</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="branding">
-                    <div class="portfolio-image">
-                        <div class="image-placeholder"></div>
-                        <div class="portfolio-overlay">
-                            <h3>Restaurant Gastronomique</h3>
-                            <p>Identité complète et site web</p>
-                            <button class="view-btn">Voir le projet</button>
-                        </div>
+
+                <div class="sd-hero-visual" aria-hidden="true">
+                    <!-- Grand A 3D stylisé en ruban torsadé avec glow animé -->
+                    <div class="sd-big-letter-wrapper">
+                        <svg viewBox="0 0 400 480" class="sd-big-letter-svg" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="a-gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffd700" />
+                                    <stop offset="50%" stop-color="#f5a623" />
+                                    <stop offset="100%" stop-color="#d48806" />
+                                </linearGradient>
+                                <linearGradient id="a-cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00bcd4" />
+                                    <stop offset="50%" stop-color="#007791" />
+                                    <stop offset="100%" stop-color="#052c42" />
+                                </linearGradient>
+                                <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="16" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                            <!-- Ombre / Ruban doré 3D -->
+                            <path d="M200 40 L60 420 L130 420 L165 320 L235 320 L270 420 L340 420 Z"
+                                fill="url(#a-gold-grad)" opacity="0.95" filter="url(#glow-gold)" />
+                            <!-- Face avant ruban cyan profond pour l'effet 3D bicolore sdley -->
+                            <path d="M200 40 L165 320 L235 320 Z" fill="url(#a-cyan-grad)" />
+                            <path d="M175 270 L225 270 L200 150 Z" fill="#041624" />
+                            <circle cx="200" cy="240" r="140" stroke="rgba(255,215,0,0.15)" stroke-width="2" fill="none"
+                                stroke-dasharray="8 8" class="sd-orbit-ring" />
+                        </svg>
+                        <div class="sd-letter-halo"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Section Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2 class="section-title">Contact</h2>
-                    <h3>Discutons de votre projet</h3>
-                    <p>Prêt à donner vie à vos idées ? Contactez-nous pour discuter de votre prochain projet digital.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <strong>Email</strong>
-                            <p>amathalain2004@gmail.com</p>
-                        </div>
-                        <div class="contact-item">
-                            <strong>Téléphone</strong>
-                            <p>+221 76 255 32 32</p>
-                        </div>
-                        <div class="contact-item">
-                            <strong>Adresse</strong>
-                            <p>keur Massar<br>Dakar, Senegal</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Formulaire de contact -->
-                <form 
-                    class="contact-form" 
-                    id="contact-form" 
-                    action="https://formspree.io/f/xnnzkrab" 
-                    method="POST"
-                >
-                    <div class="form-group">
-                        <label for="name">Nom *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Sujet</label>
-                        <input type="text" id="subject" name="subject">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+        <!-- ==================== SECTION 2 : A PROPOS (AVEC CUBE 3D ROTATIF) ==================== -->
+        <section id="about" class="sd-section sd-about">
+            <div class="sd-container">
+                <span class="sd-code-tag">&lt;body&gt;</span>
+                <span class="sd-code-tag sd-indent">&lt;h1&gt;</span>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Sheck24</h3>
-                    <p>Créateur digital innovant</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Navigation</h4>
-                        <ul>
-                            <li><a href="#home">Accueil</a></li>
-                            <li><a href="#about">À propos</a></li>
-                            <li><a href="#portfolio">Portfolio</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                <h2 class="sd-page-title">A Propos de moi</h2>
+
+                <span class="sd-code-tag sd-indent">&lt;/h1&gt;</span>
+
+                <div class="sd-about-grid">
+                    <div class="sd-about-text">
+                        <p class="sd-lead-bio">
+                            Curieux, rigoureux et autonome, je suis <span class="sd-highlight">développeur fullstack
+                                &amp; IA en double cursus universitaire</span>, basé à Keur Massar, Dakar. Engagé dans
+                            une <span class="sd-highlight">Licence 3 Informatique simultanée à l'UNCHK et en
+                                Informatique de Gestion à ENSUP Afrique</span>, je conçois des solutions innovantes,
+                            intelligentes et à fort impact.
+                        </p>
+
+                        <p class="sd-section-subtitle-sm">Formation &amp; compétences clés :</p>
+
+                        <ul class="sd-timeline-list">
+                            <li class="sd-timeline-item">
+                                <div class="sd-timeline-header">
+                                    <strong class="sd-timeline-title">&#127979; Double cursus universitaire — Informatique, Développement d'Applications Web &amp; Mobile</strong>
+                                    <span class="sd-year-pill">En cours · L3</span>
+                                </div>
+                                <p class="sd-timeline-desc">
+                                    Formation simultanée en <strong>Licence 3 Informatique — Développement d'Applications Web &amp; Mobile</strong> à l'<strong>Université Numérique Cheikh Hamidou Kane (UNCHK)</strong> et en <strong>Informatique de Gestion</strong> à <strong>ENSUP Afrique</strong>. Un double regard académique alliant développement d'applications web et mobile modernes, et pratiques de gestion numérique.
+                                </p>
+                            </li>
+
+                            <li class="sd-timeline-item">
+                                <div class="sd-timeline-header">
+                                    <strong class="sd-timeline-title">&#128225; Certification Cisco CCST Networking — En
+                                        cours</strong>
+                                    <span class="sd-year-pill">2026</span>
+                                </div>
+                                <p class="sd-timeline-desc">
+                                    Préparation à la certification <strong>Cisco Certified Support Technician (CCST)
+                                        Networking</strong> : notions fondamentales de réseaux, adressage IPv4, médias
+                                    physiques, dépannage matériel et protocoles de communication.
+                                </p>
+                                <p class="sd-timeline-techs">
+                                    Compétences : <span class="sd-tech-highlight">Réseaux TCP/IP, IPv4, OSI, Cisco IOS,
+                                        Dépannage réseau</span>.
+                                </p>
+                            </li>
+
+                            <li class="sd-timeline-item">
+                                <div class="sd-timeline-header">
+                                    <strong class="sd-timeline-title">Développement Fullstack &amp; Architecture
+                                        Web</strong>
+                                    <span class="sd-year-pill">2023 - 2026</span>
+                                </div>
+                                <p class="sd-timeline-desc">
+                                    Conception et réalisation d'applications web complètes, de l'interface utilisateur
+                                    responsive aux APIs sécurisées et bases de données relationnelles. Participation à 3
+                                    hackathons nationaux et internationaux.
+                                </p>
+                                <p class="sd-timeline-techs">
+                                    Technologies : <span class="sd-tech-highlight">TypeScript, Python, PHP, React,
+                                        Next.js, Node.js, PostgreSQL, MySQL, Docker, Git &amp; GitHub</span>.
+                                </p>
+                            </li>
+
+                            <li class="sd-timeline-item">
+                                <div class="sd-timeline-header">
+                                    <strong class="sd-timeline-title">Intégration d'IA, LLM &amp; OCR</strong>
+                                    <span class="sd-year-pill">2024 - 2026</span>
+                                </div>
+                                <p class="sd-timeline-desc">
+                                    Intégration de modèles de langage avancés (Llama 3.1 8B sur GPU NVIDIA Brev, Google
+                                    Gemini AI) et technologies OCR pour l'automatisation de tâches administratives,
+                                    classification et analyse de documents.
+                                </p>
+                                <p class="sd-timeline-techs">
+                                    Technologies : <span class="sd-tech-highlight">Gemini AI, Llama 3.1 8B, NVIDIA Brev,
+                                        OCR, Python, REST APIs</span>.
+                                </p>
+                            </li>
                         </ul>
+
+                        <p class="sd-closing-note">
+                            Toujours prêt à relever de nouveaux défis sur des projets ambitieux. Vous pouvez consulter
+                            mon profil <a href="https://github.com/amath24" target="_blank"
+                                class="sd-link-gold">GitHub</a> ou me joindre directement via le <a href="#contact"
+                                class="sd-link-gold">formulaire de contact</a>.
+                        </p>
                     </div>
-                    <div class="footer-column">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#">Design UI/UX</a></li>
-                            <li><a href="#">Développement Web</a></li>
-                            <li><a href="#">Branding</a></li>
-                            <li><a href="#">Stratégie Digitale</a></li>
-                        </ul>
+
+                    <!-- LE FAMEUX CUBE 3D ROTATIF DU DESIGN DE RÉFÉRENCE -->
+                    <div class="sd-about-visual">
+                        <div class="sd-cube-stage">
+                            <div class="sd-cube-glow-base"></div>
+                            <div class="sd-cube" id="tech-cube">
+                                <div class="sd-cube-face sd-face-front">
+                                    <div class="sd-cube-content">
+                                        <svg viewBox="0 0 24 24" class="cube-icon cube-react" fill="none"
+                                            stroke="#00d8ff" stroke-width="1.8">
+                                            <circle cx="12" cy="12" r="2.5" />
+                                            <ellipse cx="12" cy="12" rx="10" ry="4.2" />
+                                            <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" />
+                                            <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" />
+                                        </svg>
+                                        <span>React / TS</span>
+                                    </div>
+                                </div>
+                                <div class="sd-cube-face sd-face-back">
+                                    <div class="sd-cube-content">
+                                        <svg viewBox="0 0 24 24" class="cube-icon cube-python" fill="#ffd700">
+                                            <path
+                                                d="M12 2c-3.8 0-6 2.2-6 5v2h6v1H4c-2.8 0-4 1.8-4 5s1.2 5 4 5h2v-2.5c0-1.9 1.6-3.5 3.5-3.5h5c1.4 0 2.5-1.1 2.5-2.5V7c0-2.8-2.2-5-5-5zm-2 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 18c3.8 0 6-2.2 6-5v-2h-6v-1h8c2.8 0 4-1.8 4-5s-1.2-5-4-5h-2v2.5c0 1.9-1.6 3.5-3.5 3.5h-5c-1.4 0-2.5 1.1-2.5 2.5V17c0 2.8 2.2 5 5 5zm2-2a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                                        </svg>
+                                        <span>Python</span>
+                                    </div>
+                                </div>
+                                <div class="sd-cube-face sd-face-right">
+                                    <div class="sd-cube-content">
+                                        <svg viewBox="0 0 24 24" class="cube-icon cube-postgres" fill="#336791">
+                                            <path
+                                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                                        </svg>
+                                        <span>PostgreSQL</span>
+                                    </div>
+                                </div>
+                                <div class="sd-cube-face sd-face-left">
+                                    <div class="sd-cube-content">
+                                        <svg viewBox="0 0 24 24" class="cube-icon cube-docker" fill="#2496ed">
+                                            <path
+                                                d="M13.98 11.08h-2.1v2.1h2.1v-2.1zm-2.8 0H9.08v2.1h2.1v-2.1zm5.6 0h-2.1v2.1h2.1v-2.1zm-8.4 0H6.28v2.1h2.1v-2.1zm5.6-2.8h-2.1v2.1h2.1v-2.1zm-2.8 0H9.08v2.1h2.1v-2.1zm5.6 0h-2.1v2.1h2.1v-2.1zm2.8 2.8h-2.1v2.1h2.1v-2.1zm-2.8-5.6h-2.1v2.1h2.1v-2.1zM23 13.5c-.3-1.6-1.5-2.2-2.3-2.3-.2-.5-.5-1-.9-1.4l-.4-.4-.3.4c-.4.5-.6 1.2-.6 1.8-.4-.2-.9-.3-1.4-.3H1v3.2c0 3.7 3 6.7 6.7 6.7 5.2 0 9.7-3.1 11.8-7.7h2.8c.4 0 .7 0 .7 0z" />
+                                        </svg>
+                                        <span>Docker</span>
+                                    </div>
+                                </div>
+                                <div class="sd-cube-face sd-face-top">
+                                    <div class="sd-cube-content">
+                                        <svg viewBox="0 0 24 24" class="cube-icon cube-gemini" fill="#ffd700">
+                                            <path
+                                                d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
+                                        </svg>
+                                        <span>IA &middot; Gemini</span>
+                                    </div>
+                                </div>
+                                <div class="sd-cube-face sd-face-bottom">
+                                    <div class="sd-cube-content">
+                                        <svg viewBox="0 0 24 24" class="cube-icon cube-php" fill="#777bb4">
+                                            <path
+                                                d="M4.5 10.5C3.7 10.5 3 11.2 3 12s.7 1.5 1.5 1.5S6 12.8 6 12s-.7-1.5-1.5-1.5zm15 0c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5zm-7.5 0c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5z" />
+                                        </svg>
+                                        <span>PHP &middot; SQL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Sheck24. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
+        </section>
 
-    <script src="script.js"></script>
+        <!-- ==================== SECTION 3 : PORTFOLIO ==================== -->
+        <section id="portfolio" class="sd-section sd-portfolio">
+            <div class="sd-container">
+                <span class="sd-code-tag">&lt;h1&gt;</span>
+                <h2 class="sd-page-title">Portfolio</h2>
+                <span class="sd-code-tag">&lt;/h1&gt;</span>
+
+                <!-- ENCADRÉ AVEC BARRE JAUNE GAUCHE (STYLE SDLEY EXACT) -->
+                <div class="sd-highlight-box">
+                    <span class="sd-box-category">QUELQUES PROJETS ET RÉALISATIONS</span>
+                    <h3 class="sd-box-title">Une sélection ciblée de réalisations menées jusqu'ici.</h3>
+                    <p class="sd-box-desc">
+                        Cette section présente les projets concrets que j'ai conçus et développés. Il s'agit d'un aperçu
+                        choisi pour illustrer mon approche : clarté fonctionnelle, qualité du code, intégration d'IA
+                        moderne et expérience utilisateur soignée.
+                    </p>
+                </div>
+
+                <div class="sd-portfolio-grid">
+
+                    <!-- PROJET 1 : SUNUPAY -->
+                    <div class="sd-project-card">
+                        <div class="sd-project-thumb">
+                            <img src="img/logos/sunupay.svg" alt="Logo SunuPay">
+                            <div class="sd-project-overlay">
+                                <span class="sd-proj-badge">FINTECH &middot; PAIEMENT MOBILE</span>
+                                <h4 class="sd-proj-title">SunuPay</h4>
+                                <p class="sd-proj-desc">Plateforme de paiement sécurisée intégrant l'API Bitnob, backend
+                                    Python, base PostgreSQL et containerisation Docker.</p>
+                                <p class="sd-proj-techs">Technologies : <span class="sd-tech-highlight">Python,
+                                        TypeScript, PostgreSQL, Docker</span></p>
+                                <div class="sd-proj-links">
+                                    <a href="https://github.com/amath24/erp-paiements-bitnob" target="_blank"
+                                        rel="noopener noreferrer" class="sd-proj-btn">Voir GitHub &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJET 2 : DAKAR JOJ CONNECT -->
+                    <div class="sd-project-card">
+                        <div class="sd-project-thumb">
+                            <img src="img/logos/joj.svg" alt="Logo Dakar JOJ Connect">
+                            <div class="sd-project-overlay">
+                                <span class="sd-proj-badge">IA &middot; DAKAR 2026</span>
+                                <h4 class="sd-proj-title">Dakar JOJ Connect</h4>
+                                <p class="sd-proj-desc">Application IA officielle dédiée aux Jeux Olympiques de la
+                                    Jeunesse Dakar 2026 : informations, orientation et services aux participants en
+                                    temps réel.</p>
+                                <p class="sd-proj-techs">Technologies : <span class="sd-tech-highlight">Gemini AI, AI
+                                        Studio, JavaScript</span></p>
+                                <div class="sd-proj-links">
+                                    <a href="https://dakar-joj-connect.ai.studio" target="_blank"
+                                        rel="noopener noreferrer" class="sd-proj-btn">Visiter le site &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJET 3 : MAIRIE DE SACRE-COEUR -->
+                    <div class="sd-project-card">
+                        <div class="sd-project-thumb">
+                            <img src="img/logos/mairie.svg" alt="Logo Mairie de Sacré-Cœur">
+                            <div class="sd-project-overlay">
+                                <span class="sd-proj-badge">IA &middot; OCR &middot; MUNICIPALITÉ</span>
+                                <h4 class="sd-proj-title">Mairie de Sacré-Cœur</h4>
+                                <p class="sd-proj-desc">Portail municipal avec reconnaissance de documents par OCR et IA
+                                    pour l'automatisation du traitement des actes civils et demandes citoyennes.</p>
+                                <p class="sd-proj-techs">Technologies : <span class="sd-tech-highlight">PHP, MySQL, OCR,
+                                        IA, Bootstrap</span></p>
+                                <div class="sd-proj-links">
+                                    <a href="https://github.com/amath24/mairie-de-SACRE-KEUR" target="_blank"
+                                        rel="noopener noreferrer" class="sd-proj-btn">Voir GitHub &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJET 4 : SAMAPROF -->
+                    <div class="sd-project-card">
+                        <div class="sd-project-thumb">
+                            <img src="img/logos/samaprof.svg" alt="Logo SamaProf">
+                            <div class="sd-project-overlay">
+                                <span class="sd-proj-badge">ÉDUCATION &middot; PLATEFORME</span>
+                                <h4 class="sd-proj-title">SamaProf</h4>
+                                <p class="sd-proj-desc">Plateforme éducative connectant élèves et professeurs avec
+                                    gestion des cours, suivi pédagogique et base de données relationnelle.</p>
+                                <p class="sd-proj-techs">Technologies : <span class="sd-tech-highlight">TypeScript,
+                                        PostgreSQL, JavaScript, CSS</span></p>
+                                <div class="sd-proj-links">
+                                    <a href="https://github.com/amath24/samaprof" target="_blank"
+                                        rel="noopener noreferrer" class="sd-proj-btn">Voir GitHub &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJET 5 : AGRILINK -->
+                    <div class="sd-project-card">
+                        <div class="sd-project-thumb">
+                            <img src="img/logos/agrilink.svg" alt="Logo AGRILINK">
+                            <div class="sd-project-overlay">
+                                <span class="sd-proj-badge">AGROTECH &middot; COMMERCE DIRECT</span>
+                                <h4 class="sd-proj-title">AGRILINK</h4>
+                                <p class="sd-proj-desc">Plateforme web de gestion d'exploitation agroalimentaire et
+                                    commercialisation directe par précommande de produits agricoles.</p>
+                                <p class="sd-proj-techs">Technologies : <span class="sd-tech-highlight">TypeScript,
+                                        React, HTML, CSS</span></p>
+                                <div class="sd-proj-links">
+                                    <a href="https://github.com/amath24/AGRILINK" target="_blank"
+                                        rel="noopener noreferrer" class="sd-proj-btn">Voir GitHub &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJET 6 : TERANGA GOURMET -->
+                    <div class="sd-project-card">
+                        <div class="sd-project-thumb">
+                            <img src="img/logos/teranga.svg" alt="Logo Teranga Gourmet">
+                            <div class="sd-project-overlay">
+                                <span class="sd-proj-badge">GASTRONOMIE &middot; E-COMMERCE</span>
+                                <h4 class="sd-proj-title">Teranga Gourmet</h4>
+                                <p class="sd-proj-desc">Site web vitrine et e-commerce gastronomique mettant en valeur
+                                    les spécialités de la cuisine sénégalaise avec réservations en ligne.</p>
+                                <p class="sd-proj-techs">Technologies : <span class="sd-tech-highlight">HTML5, CSS3,
+                                        JavaScript</span></p>
+                                <div class="sd-proj-links">
+                                    <a href="https://github.com/amath24/-Teranga-Gourmet" target="_blank"
+                                        rel="noopener noreferrer" class="sd-proj-btn">Voir GitHub &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJET 7 : SUPTECH -->
+                    <div class="sd-project-card">
+                        <div class="sd-project-thumb">
+                            <img src="img/logos/suptech.svg" alt="Logo SupTech">
+                            <div class="sd-project-overlay">
+                                <span class="sd-proj-badge">SYSTÈME WEB ACADÉMIQUE</span>
+                                <h4 class="sd-proj-title">SupTech</h4>
+                                <p class="sd-proj-desc">Plateforme de gestion pour établissement d'enseignement
+                                    supérieur, inscriptions et services technologiques.</p>
+                                <p class="sd-proj-techs">Technologies : <span class="sd-tech-highlight">PHP, CSS,
+                                        JavaScript, MySQL</span></p>
+                                <div class="sd-proj-links">
+                                    <a href="https://github.com/amath24/SupTech" target="_blank"
+                                        rel="noopener noreferrer" class="sd-proj-btn">Voir GitHub &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJET 8 : SAMAROF -->
+                    <div class="sd-project-card">
+                        <div class="sd-project-thumb">
+                            <img src="img/logos/samarof.svg" alt="Logo Samarof">
+                            <div class="sd-project-overlay">
+                                <span class="sd-proj-badge">INTELLIGENCE ARTIFICIELLE</span>
+                                <h4 class="sd-proj-title">Samarof</h4>
+                                <p class="sd-proj-desc">Plateforme intelligente intégrant des capacités d'IA pour
+                                    automatiser les processus métiers et l'aide à la décision.</p>
+                                <p class="sd-proj-techs">Technologies : <span class="sd-tech-highlight">Python, IA, API
+                                        REST</span></p>
+                                <div class="sd-proj-links">
+                                    <a href="https://github.com/amath24" target="_blank" rel="noopener noreferrer"
+                                        class="sd-proj-btn">Voir GitHub &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sd-portfolio-cta">
+                    <a href="https://github.com/amath24" target="_blank" rel="noopener noreferrer"
+                        class="sd-btn sd-btn-outline">VOIR TOUS MES PROJETS SUR GITHUB &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4 : MES SERVICES ==================== -->
+        <section id="services" class="sd-section sd-services">
+            <div class="sd-container">
+                <span class="sd-code-tag">&lt;h1&gt;</span>
+                <h2 class="sd-page-title">Mes Services</h2>
+                <span class="sd-code-tag">&lt;/h1&gt;</span>
+
+                <div class="sd-services-header">
+                    <span class="sd-services-kicker">CE QUE JE PEUX CONSTRUIRE POUR VOUS</span>
+                    <p class="sd-services-intro">
+                        J'accompagne entreprises, entrepreneurs et équipes produit dans la conception de solutions
+                        numériques performantes, durables et orientées impact. Chaque service est pensé pour transformer
+                        vos objectifs en résultats concrets.
+                    </p>
+                </div>
+
+                <div class="sd-services-grid">
+
+                    <!-- SERVICE 1 : FULLSTACK -->
+                    <div class="sd-service-card">
+                        <div class="sd-service-illustration">
+                            <div class="sd-schema-window">
+                                <div class="sd-window-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="sd-schema-content">
+                                    <div class="sd-box-ui">UI</div>
+                                    <div class="sd-schema-arrow">&harr;</div>
+                                    <div class="sd-circle-api">API<br><small>integration</small></div>
+                                    <div class="sd-schema-arrow">&harr;</div>
+                                    <div class="sd-box-back">BACKEND<br><small>Python/Node</small></div>
+                                </div>
+                                <div class="sd-schema-tag">FRONT &middot; API &middot; BACK</div>
+                            </div>
+                        </div>
+                        <span class="sd-serv-category">DU CONCEPT À LA PRODUCTION</span>
+                        <h3 class="sd-serv-title">Développement Fullstack</h3>
+                        <p class="sd-serv-desc">Conception et livraison de solutions web complètes, de l'interface
+                            utilisateur aux APIs et à la base de données, avec une architecture évolutive, testable et
+                            sécurisée.</p>
+                        <a href="#contact" class="sd-btn-service">COMMANDER CE SERVICE</a>
+                    </div>
+
+                    <!-- SERVICE 2 : FRONTEND & MOBILE -->
+                    <div class="sd-service-card">
+                        <div class="sd-service-illustration">
+                            <div class="sd-schema-window">
+                                <div class="sd-window-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="sd-mockup-layout">
+                                    <div class="sd-mockup-nav"></div>
+                                    <div class="sd-mockup-body">
+                                        <div class="sd-mockup-col"></div>
+                                        <div class="sd-mockup-col large"></div>
+                                    </div>
+                                </div>
+                                <div class="sd-schema-tag">UI / UX MODERNE &amp; RESPONSIVE</div>
+                            </div>
+                        </div>
+                        <span class="sd-serv-category">RAPIDITÉ UI ET EXPÉRIENCE PRODUIT</span>
+                        <h3 class="sd-serv-title">Développement Frontend &amp; Mobile</h3>
+                        <p class="sd-serv-desc">Création d'interfaces modernes, ultra-rapides et responsives avec une
+                            attention forte portée à l'expérience utilisateur, l'accessibilité et les performances.</p>
+                        <a href="#contact" class="sd-btn-service">COMMANDER CE SERVICE</a>
+                    </div>
+
+                    <!-- SERVICE 3 : BACKEND & BDD -->
+                    <div class="sd-service-card">
+                        <div class="sd-service-illustration">
+                            <div class="sd-schema-window">
+                                <div class="sd-window-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="sd-code-preview">
+                                    <code>@app.post("/api/v1/pay")<br>def process_payment(tx):<br>&nbsp;&nbsp;return db.save(tx)</code>
+                                </div>
+                                <div class="sd-db-cylinder">POSTGRESQL &middot; MYSQL</div>
+                                <div class="sd-schema-tag">APIS ROBUSTES &amp; SQL</div>
+                            </div>
+                        </div>
+                        <span class="sd-serv-category">APIS FIABLES ET LOGIQUE MÉTIER</span>
+                        <h3 class="sd-serv-title">Développement Backend &amp; APIs</h3>
+                        <p class="sd-serv-desc">Mise en place de services robustes et maintenables : APIs RESTful,
+                            authentification JWT, logique métier, intégration de passerelles de paiement et gestion de
+                            données.</p>
+                        <a href="#contact" class="sd-btn-service">COMMANDER CE SERVICE</a>
+                    </div>
+
+                    <!-- SERVICE 4 : IA & OCR -->
+                    <div class="sd-service-card">
+                        <div class="sd-service-illustration">
+                            <div class="sd-schema-window">
+                                <div class="sd-window-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="sd-ai-diagram">
+                                    <div class="sd-doc-scan">DOC OCR</div>
+                                    <div class="sd-ai-core">&DoubleRightArrow; GEMINI AI &DoubleRightArrow;</div>
+                                    <div class="sd-data-out">DONNÉES STRUCTURÉES</div>
+                                </div>
+                                <div class="sd-schema-tag">INTELLIGENCE ARTIFICIELLE &middot; OCR</div>
+                            </div>
+                        </div>
+                        <span class="sd-serv-category">AUTOMATISATION &amp; INNOVATION</span>
+                        <h3 class="sd-serv-title">Solutions IA &amp; OCR</h3>
+                        <p class="sd-serv-desc">Intégration d'intelligence artificielle (Gemini AI) et de modules OCR
+                            pour la numérisation automatique de documents, la classification et le gain de productivité.
+                        </p>
+                        <a href="#contact" class="sd-btn-service">COMMANDER CE SERVICE</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 5 : MES ACTIVITÉS (STYLE SDLEY AVEC SLIDER) ==================== -->
+        <section id="activities" class="sd-section sd-activities">
+            <div class="sd-container">
+                <span class="sd-code-tag">&lt;h1&gt;</span>
+                <h2 class="sd-page-title">Mes Activités</h2>
+                <span class="sd-code-tag">&lt;/h1&gt;</span>
+
+                <div class="sd-highlight-box">
+                    <span class="sd-box-category">HACKATHONS &amp; RÉALISATIONS (2026)</span>
+                    <h3 class="sd-box-title">Activités de terrain &amp; compétitions technologiques</h3>
+                    <p class="sd-box-desc">
+                        Trois engagements concrets sur le terrain en 2026 — hackathons IA, fintech et données satellitaires. Les photos arriveront bient&ocirc;t !
+                    </p>
+                </div>
+
+                <!-- SLIDER D'ACTIVITÉS INTERACTIF (CAPTURE 184138) -->
+                <div class="sd-slider-wrapper">
+                    <button class="sd-slider-btn prev" id="slider-prev" aria-label="Photo précédente">&#10094;</button>
+
+                    <div class="sd-slider-track" id="slider-track">
+
+                        <!-- SLIDE 1 : GOMYCODE -->
+                        <div class="sd-slide active">
+                            <img src="img/hackathon_gomycode.jpg" alt="Hackathon GOMYCODE Come Build with AI" class="sd-slide-img">
+                            <div class="sd-slide-card">
+                                <span class="sd-slide-badge">&#127942; HACKATHON &middot; 27 SEPTEMBRE 2026</span>
+                                <h4 class="sd-slide-title">GOMYCODE — Come Build with AI</h4>
+                                <p class="sd-slide-meta">Frontend/UX &middot; Next.js 15 &middot; Llama 3.1 8B sur NVIDIA Brev</p>
+                                <span class="sd-slide-counter">01 / 03</span>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 2 : CODE AND CHAIN DAKAR -->
+                        <div class="sd-slide">
+                            <img src="img/hackathon_codechain.jpg" alt="Code and Chain Dakar" class="sd-slide-img">
+                            <div class="sd-slide-card">
+                                <span class="sd-slide-badge">&#9889; FINTECH &middot; OCTOBRE 2026</span>
+                                <h4 class="sd-slide-title">Code and Chain Dakar</h4>
+                                <p class="sd-slide-meta">Auth HMAC &middot; API Bitnob &middot; Int&eacute;gration paiements</p>
+                                <span class="sd-slide-counter">02 / 03</span>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 3 : SENSAT -->
+                        <div class="sd-slide">
+                            <img src="img/hackathon_sensat.jpg" alt="Hackathon National SENSAT" class="sd-slide-img">
+                            <div class="sd-slide-card">
+                                <span class="sd-slide-badge">&#127757; HACKATHON NATIONAL &middot; OCTOBRE 2026</span>
+                                <h4 class="sd-slide-title">SENSAT — Du satellite &agrave; la solution</h4>
+                                <p class="sd-slide-meta">Cartographie inondations &middot; Sentinel-1/2 &middot; GPM-IMERG</p>
+                                <span class="sd-slide-counter">03 / 03</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button class="sd-slider-btn next" id="slider-next" aria-label="Photo suivante">&#10095;</button>
+
+                    <div class="sd-slider-dots" id="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 6 : ME CONTACTER (AVEC CARTE LEAFLET DAKAR) ==================== -->
+        <section id="contact" class="sd-section sd-contact">
+            <div class="sd-container">
+                <span class="sd-code-tag">&lt;body&gt;</span>
+                <span class="sd-code-tag sd-indent">&lt;h1&gt;</span>
+                <h2 class="sd-page-title">Me Contacter</h2>
+                <span class="sd-code-tag sd-indent">&lt;/h1&gt;</span>
+
+                <div class="sd-contact-grid">
+                    <div class="sd-contact-form-side">
+                        <p class="sd-contact-intro">
+                            Naturellement je suis intéressé par tous les domaines qui touchent la technologie et
+                            l'intelligence artificielle. Je suis très ouvert et prêt à relever de nouveaux défis.
+                            N'hésitez surtout pas à me contacter pour vos ambitieux projets via ce formulaire ci-dessous
+                            :
+                        </p>
+
+                        <form class="sd-contact-form" id="contact-form" action="https://formspree.io/f/xnnzkrab"
+                            method="POST">
+                            <div class="sd-form-row">
+                                <input type="text" name="name" id="name" placeholder="Votre Prénom &amp; Nom" required>
+                                <input type="email" name="email" id="email" placeholder="Votre Email :" required>
+                            </div>
+                            <div class="sd-form-group">
+                                <input type="text" name="subject" id="subject" placeholder="Sujet :">
+                            </div>
+                            <div class="sd-form-group">
+                                <textarea name="message" id="message" rows="5" placeholder="Votre message : ..."
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="sd-btn sd-btn-gold" id="submit-btn">ENVOYER</button>
+                        </form>
+
+                        <span class="sd-code-tag">&lt;/body&gt;</span>
+                        <span class="sd-code-tag">&lt;/html&gt;</span>
+                    </div>
+
+                    <!-- CARTE INTERACTIVE LEAFLET DAKAR (STYLE SDLEY EXACT) -->
+                    <div class="sd-contact-map-side">
+                        <div id="sdley-map" class="sd-leaflet-map"></div>
+                        <!-- Badge d'information flottant sur la carte comme sur sdley -->
+                        <div class="sd-map-badge">
+                            <h4>Amath Alain SECK,</h4>
+                            <p class="sd-badge-role">Fullstack &amp; Mobile Developer,</p>
+                            <p class="sd-badge-loc">Keur Massar, Dakar, Sénégal</p>
+                            <p class="sd-badge-email">amathalain2004@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="sd-footer">
+            <div class="sd-container sd-footer-container">
+                <p class="sd-footer-copy">Copyright &copy; Amath Alain Seck 2024 - 2026. Tous droits réservés.</p>
+                <div class="sd-footer-links">
+                    <a href="https://github.com/amath24" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="mailto:amathalain2004@gmail.com">Email</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#activities">Activités</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
 </body>
+
 </html>
-
-
-
-<script>
-// === VARIABLES GLOBALES ===
-let isMenuOpen = false;
-let currentFilter = 'all';
-
-// === INITIALISATION ===
-document.addEventListener('DOMContentLoaded', function() {
-    initNavigation();
-    initScrollAnimations();
-    initPortfolioFilters();
-    initContactForm();
-    initSmoothScrolling();
-    initScrollIndicator();
-});
-
-// === NAVIGATION ===
-function initNavigation() {
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbar = document.getElementById('navbar');
-
-    // Toggle menu mobile
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        isMenuOpen = !isMenuOpen;
-    });
-
-    // Fermer le menu lors du clic sur un lien
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            isMenuOpen = false;
-            
-            // Mise à jour du lien actif
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-
-    // Effet de scroll sur la navbar
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        // Mise à jour du lien actif selon la section visible
-        updateActiveNavLink();
-    });
-}
-
-// === MISE À JOUR DU LIEN ACTIF ===
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// === ANIMATIONS AU SCROLL ===
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    // Éléments à animer
-    const elementsToAnimate = [
-        '.about-text',
-        '.about-image',
-        '.service-card',
-        '.portfolio-item',
-        '.contact-info',
-        '.contact-form',
-        '.stat-item'
-    ];
-
-    elementsToAnimate.forEach(selector => {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach((element, index) => {
-            element.classList.add('fade-in');
-            element.style.transitionDelay = `${index * 0.1}s`;
-            observer.observe(element);
-        });
-    });
-
-    // Animations spécifiques
-    const leftElements = document.querySelectorAll('.about-text, .contact-info');
-    leftElements.forEach(element => {
-        element.classList.remove('fade-in');
-        element.classList.add('slide-in-left');
-    });
-
-    const rightElements = document.querySelectorAll('.about-image, .contact-form');
-    rightElements.forEach(element => {
-        element.classList.remove('fade-in');
-        element.classList.add('slide-in-right');
-    });
-}
-
-// === FILTRES PORTFOLIO ===
-function initPortfolioFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
-            // Mise à jour du bouton actif
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Filtrage des éléments
-            filterPortfolioItems(filter);
-            currentFilter = filter;
-        });
-    });
-}
-
-function filterPortfolioItems(filter) {
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    portfolioItems.forEach((item, index) => {
-        const category = item.getAttribute('data-category');
-        
-        if (filter === 'all' || category === filter) {
-            // Afficher l'élément avec animation
-            setTimeout(() => {
-                item.classList.remove('hidden');
-                item.style.animationDelay = `${index * 0.1}s`;
-            }, index * 50);
-        } else {
-            // Masquer l'élément
-            item.classList.add('hidden');
-        }
-    });
-}
-
-// === FORMULAIRE DE CONTACT ===
-function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Récupération des données du formulaire
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Validation
-        if (!validateForm(data)) {
-            return;
-        }
-        
-        // Simulation d'envoi
-        simulateFormSubmission(data);
-    });
-}
-
-function validateForm(data) {
-    const errors = [];
-    
-    if (!data.name || data.name.trim().length < 2) {
-        errors.push('Le nom doit contenir au moins 2 caractères');
-    }
-    
-    if (!data.email || !isValidEmail(data.email)) {
-        errors.push('Veuillez entrer une adresse email valide');
-    }
-    
-    if (!data.message || data.message.trim().length < 10) {
-        errors.push('Le message doit contenir au moins 10 caractères');
-    }
-    
-    if (errors.length > 0) {
-        showNotification('Erreur: ' + errors.join(', '), 'error');
-        return false;
-    }
-    
-    return true;
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function simulateFormSubmission(data) {
-    // Affichage du message de chargement
-    const submitButton = document.querySelector('.contact-form .btn-primary');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Envoi en cours...';
-    submitButton.disabled = true;
-    
-    // Simulation d'envoi (2 secondes)
-    setTimeout(() => {
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-        
-        // Réinitialisation du formulaire
-        document.getElementById('contact-form').reset();
-        
-        // Message de succès
-        showNotification('Message envoyé avec succès !', 'success');
-    }, 2000);
-}
-
-// === SYSTÈME DE NOTIFICATIONS ===
-function showNotification(message, type = 'info') {
-    // Création de l'élément notification
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    
-    // Styles inline pour la notification
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 10px;
-        color: white;
-        font-weight: 500;
-        z-index: 10000;
-        opacity: 0;
-        transform: translateX(100%);
-        transition: all 0.3s ease;
-        max-width: 300px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    `;
-    
-    // Couleurs selon le type
-    const colors = {
-        success: '#10b981',
-        error: '#ef4444',
-        info: '#6366f1',
-        warning: '#f59e0b'
-    };
-    
-    notification.style.backgroundColor = colors[type] || colors.info;
-    
-    // Ajout au DOM
-    document.body.appendChild(notification);
-    
-    // Animation d'entrée
-    setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Suppression automatique
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateX(100%)';
-        
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
-    }, 4000);
-}
-
-// === SCROLL FLUIDE ===
-function initSmoothScrolling() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const offsetTop = target.offsetTop - 80;
-                
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// === INDICATEUR DE SCROLL ===
-function initScrollIndicator() {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', function() {
-            const aboutSection = document.getElementById('about');
-            if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    }
-}
-
-// === EFFETS PARALLAX ===
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.floating-shapes');
-    
-    parallaxElements.forEach(element => {
-        const speed = 0.5;
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
-    });
-});
-
-// === GESTION DES ERREURS ===
-window.addEventListener('error', function(e) {
-    console.error('Erreur détectée:', e.error);
-});
-
-// === OPTIMISATION PERFORMANCE ===
-// Throttle function pour optimiser les événements scroll
-function throttle(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Application du throttle aux événements scroll
-const throttledScrollHandler = throttle(function() {
-    updateActiveNavLink();
-}, 100);
-
-window.addEventListener('scroll', throttledScrollHandler);
-
-// === CHARGEMENT LAZY POUR LES IMAGES ===
-function initLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// === ANIMATIONS COMPLEXES ===
-function initAdvancedAnimations() {
-    // Animation des compteurs
-    const counters = document.querySelectorAll('.stat-number');
-    
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    });
-    
-    counters.forEach(counter => counterObserver.observe(counter));
-}
-
-function animateCounter(element) {
-    const target = parseInt(element.textContent);
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let current = 0;
-    
-    const timer = setInterval(() => {
-        current += step;
-        element.textContent = Math.floor(current);
-        
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        }
-    }, 16);
-}
-
-// === ACCESSIBILITÉ ===
-function initAccessibility() {
-    // Gestion du focus pour la navigation au clavier
-    const focusableElements = document.querySelectorAll('a, button, input, textarea, select');
-    
-    focusableElements.forEach(element => {
-        element.addEventListener('focus', function() {
-            this.style.outline = '2px solid #6366f1';
-            this.style.outlineOffset = '2px';
-        });
-        
-        element.addEventListener('blur', function() {
-            this.style.outline = 'none';
-        });
-    });
-}
-
-// === INITIALISATION COMPLÈTE ===
-document.addEventListener('DOMContentLoaded', function() {
-    initAdvancedAnimations();
-    initLazyLoading();
-    initAccessibility();
-});
-</script>
