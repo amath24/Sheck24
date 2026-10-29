@@ -895,11 +895,45 @@ img {
     font-weight: 600;
     letter-spacing: 1px;
     transition: all var(--transition-fast);
+    text-decoration: none;
 }
 
 .sd-proj-btn:hover {
     background: var(--gold);
     color: #041624;
+}
+
+/* Bouton "Voir le site" — variante cyan */
+.sd-proj-btn-live {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+.sd-proj-btn-live:hover {
+    background: var(--cyan);
+    color: #041624;
+}
+
+/* Badge "Repo privé" */
+.sd-proj-btn-private {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: default;
+    opacity: 0.7;
+}
+
+/* Flex pour aligner plusieurs boutons côte à côte */
+.sd-proj-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .sd-portfolio-cta {
