@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     initIntroLoader();
+    initScrollReveal();
     initSidebar();
     initMobileMenu();
     initSmoothScroll();
@@ -301,4 +302,61 @@ function initIntroLoader() {
 
     // Laisse admirer le logo et la barre se remplir ~1 seconde
     setTimeout(triggerReveal, 1100);
+}
+
+// ==================== 9. ANIMATIONS AU DÉFILEMENT (SCROLL REVEAL) ====================
+function initScrollReveal() {
+    const selectors = [
+        '.sd-page-title',
+        '.sd-highlight-box',
+        '.sd-services-header',
+        '.sd-timeline-item',
+        '.sd-cube-stage',
+        '.sd-project-card',
+        '.sd-service-card',
+        '.sd-slider-wrapper',
+        '.sd-contact-intro',
+        '.sd-contact-form',
+        '.sd-contact-map-side'
+    ];
+
+    const elements = document.querySelectorAll(selectors.join(', '));
+
+    // Fallback pour anciens navigateurs
+    if (!('IntersectionObserver' in window)) {
+        elements.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px 0px -70px 0px',
+        threshold: 0.12
+    });
+
+    elements.forEach(el => {
+        el.classList.add('sd-reveal-item');
+
+        // Échelonnage fluide en cascade pour les cartes de grilles
+        if (el.classList.contains('sd-project-card') || el.classList.contains('sd-service-card')) {
+            const siblings = Array.from(el.parentNode.children);
+            const index = siblings.indexOf(el);
+            const delay = (index % 3) * 0.12;
+            el.style.transitionDelay = `${delay}s`;
+        } else if (el.classList.contains('sd-timeline-item')) {
+            const siblings = Array.from(el.parentNode.children);
+            const index = siblings.indexOf(el);
+            const delay = index * 0.1;
+            el.style.transitionDelay = `${delay}s`;
+        }
+
+        revealObserver.observe(el);
+    });
 }
