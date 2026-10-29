@@ -30,6 +30,33 @@
 
 <body>
 
+    <!-- ========== ANIMATION D'INTRODUCTION À L'ARRIVÉE SUR LE SITE ========== -->
+    <div class="sd-intro-loader" id="intro-loader">
+        <div class="sd-loader-content">
+            <div class="sd-loader-logo">
+                <svg viewBox="0 0 80 80" class="sd-loader-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="40" cy="40" r="36" stroke="rgba(255, 215, 0, 0.25)" stroke-width="2" stroke-dasharray="6 6" class="sd-loader-spin" />
+                    <path d="M40 10L14 70H30L40 46L50 70H66L40 10Z" fill="url(#loader-grad-cyan)" stroke="#ffd700" stroke-width="2.5" class="sd-loader-letter" />
+                    <path d="M30 46H50L40 22L30 46Z" fill="#ffd700" />
+                    <defs>
+                        <linearGradient id="loader-grad-cyan" x1="14" y1="10" x2="66" y2="70" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00bcd4" />
+                            <stop offset="1" stop-color="#05445e" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="sd-loader-glow"></div>
+            </div>
+            <div class="sd-loader-text">
+                <span class="sd-loader-name">Amath Alain Seck</span>
+                <span class="sd-loader-sub">Développeur Fullstack &bull; Mobile &bull; IA</span>
+            </div>
+            <div class="sd-loader-bar">
+                <div class="sd-loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ========== SIDEBAR GAUCHE (STYLE SDLEY) ========== -->
     <aside class="sd-sidebar" id="sidebar">
         <a href="#home" class="sd-sidebar-logo" aria-label="Accueil Amath">

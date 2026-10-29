@@ -4,6 +4,7 @@
 // ================================================================
 
 document.addEventListener('DOMContentLoaded', function () {
+    initIntroLoader();
     initSidebar();
     initMobileMenu();
     initSmoothScroll();
@@ -277,4 +278,27 @@ function showNotification(message, type = 'info') {
         notif.style.transform = 'translateY(-20px)';
         setTimeout(() => notif.remove(), 300);
     }, 5000);
+}
+
+// ==================== 8. ANIMATION D'INTRODUCTION À L'ARRIVÉE ====================
+function initIntroLoader() {
+    const loader = document.getElementById('intro-loader');
+    if (!loader) {
+        document.body.classList.add('site-ready');
+        return;
+    }
+
+    const triggerReveal = () => {
+        // Ajoute la classe site-ready pour démarrer la cascade du Hero
+        document.body.classList.add('site-ready');
+        // Fade out du rideau d'introduction
+        loader.classList.add('fade-out');
+
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 700);
+    };
+
+    // Laisse admirer le logo et la barre se remplir ~1 seconde
+    setTimeout(triggerReveal, 1100);
 }
